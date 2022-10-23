@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;500;600&display=swap');
+
+:root {
+  --color-primary: #7380ec;
+  --color-danger: #ff7782;
+  --color-success: #41f1b6;
+  --color-warning: #ffbb55;
+  --color-white: #fff;
+  --color-info-dark: #7d8da1;
+  --color-info-light: #dce1eb;
+  --color-dark: #363949;
+  --color-light: rgba(0, 0, 0, 25%);
+  --color-primary-variant: #111e88;
+  --color-dark-variant: #f7f7f7;
+  --color-background: #f6f6f6;
+  --color-green: #E1FAFF;
+  --color-pp: #5D13E7;
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+  --card-padding: 1rem;
+  --padding-1: 1.2rem;
+  --box-shadow: 0px 4px 4px var(--color-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  min-width: 887px;
+  /* min-height: 30px; */
+  background: var(--color-dark-variant);
+  /* width: 100vw; */
+  /* font-family: 'Roboto Slab', serif; */
+  font-family: 'Athiti', sans-serif;
+  font-size: 0.88rem;
+  overflow-x: hidden;
+}
+
+.container {
+  /* display: grid; */
+  width: 96%;
+  margin: auto;
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto 23rem;
+}
+
+/* width */
+/* ::-webkit-scrollbar {
+  width: 0px;
+} */
+
+Link {
+  color: var(--color-dark);
+}
+
+img {
+  display: block;
+  width: 100%
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h3 {
+  font-size: 1rem;
+  text-align: center;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
+h5 {
+  font-size: 0.77rem;
+}
+
+small {
+  font-size: 0.75rem;
+}
+
+.profile-photo {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden
+}
+
+.text-muted {
+  color: var(--color-info-dark);
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 50%);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  color: var(--color-dark-variant);
+}
+
+b {
+  color: var(--color-dark);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.danger {
+  color: var(--color-primary);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.warning {
+  color: var(--color-warning);
+}
