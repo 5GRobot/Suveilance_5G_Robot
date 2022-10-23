@@ -424,13 +424,13 @@ const ConferenceComponent = () => {
                 <div className='center' style={{ paddingLeft: '20px', background: '#f6f6f6' }}>
                     <div id="videos" >
                         <div id="videoGrid" >
-                            <div className='grid-item-admin' >
+                            {/* <div className='grid-item-admin' >
                                 <video className='user' autoPlay playsInline ref={localVideo} muted></video>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
-                <div className='' style={{ padding: '0px 20px' }}>
+                <div className='' style={{display: 'none', padding: '0px 20px' }}>
                     <button className='btn btn-primary' id='recordBtn' >
                         Start Recording
                     </button>
