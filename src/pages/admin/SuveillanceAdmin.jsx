@@ -12,19 +12,21 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Switch from "react-switch";
-import { controlUp, controlDown, controlLeft, controlRight, controlStop } from '../../services/controlRobot'
+import { controlUp, controlDown, controlLeft, controlRight, controlUpLeft, controlUpRight, controlDownLeft, controlDownRight, controlStop } from '../../services/controlRobot'
 import { postMode } from '../../services/MqttMode';
 
 const SuveillanceAdmin = () => {
     const [intervals, setIntervals] = useState(undefined)
     const [masks, setMasks] = useState(undefined)
     const [sensors, setSensors] = useState(undefined)
+    const [infoOuter, setInfoOuter] = useState(undefined)
 
     useEffect(() => {
         // const interval = setInterval(() => {
         //     fetchData();
         // }, 1000);
         // return () => clearInterval(interval);
+        setInfoOuter(document.getElementById('key-info'))
     }, []);
 
     const fetchData = async () => {
@@ -58,62 +60,119 @@ const SuveillanceAdmin = () => {
         }
     }, [checked])
 
-    let controls = false
-    window.addEventListener('keydown', e => {
-        if (e.key === 'w' && controls === false) {
+    var map = [];
+    var lastEvent;
+    var heldKeys = {};
+    if (infoOuter !== undefined) {
+        var info = infoOuter.appendChild(document.createTextNode(''));
+    }
+
+    window.onkeydown = function (event) {
+        map[event.key] = true;
+        if (lastEvent && lastEvent.key == event.key) {
+            return;
+        }
+        lastEvent = event;
+        heldKeys[event.key] = true;
+        info.data = JSON.stringify(heldKeys);
+
+        if (infoOuter.innerText === '{"w":true}') {
+            console.log("up")
             controlUp()
             document.getElementById("top").disabled = false;
             document.getElementById("top").classList.add('hover');
             document.getElementById("top").classList.add('active');
-            controls = true
-            console.log(controls)
         }
-        else if (e.key === 'a' && controls === false) {
+        if (infoOuter.innerText === '{"a":true}') {
+            console.log("left")
             controlLeft()
             document.getElementById("left").disabled = false;
             document.getElementById("left").classList.add('hover');
             document.getElementById("left").classList.add('active');
-            controls = true
         }
-        else if (e.key === 's' && controls === false) {
+        if (infoOuter.innerText === '{"s":true}') {
+            console.log("down")
             controlDown()
             document.getElementById("bottom").disabled = false;
             document.getElementById("bottom").classList.add('hover');
             document.getElementById("bottom").classList.add('active');
-            controls = true
-
         }
-        else if (e.key === 'd' && controls === false) {
+        if (infoOuter.innerText === '{"d":true}') {
+            console.log("right")
             controlRight()
             document.getElementById("right").disabled = false;
             document.getElementById("right").classList.add('hover');
             document.getElementById("right").classList.add('active');
-            controls = true
         }
-        // else {
-        //   const interval = setInterval(() => {
-        //     
-        //   }, 500);
-        //   return () => clearInterval(interval);
-        // }
-    })
-    window.addEventListener('keyup', e => {
-        controls = false
-        controlStop()
-        document.getElementById("top").classList.remove('hover');
-        document.getElementById("top").classList.remove('active');
-        document.getElementById("left").classList.remove('hover');
-        document.getElementById("left").classList.remove('active');
-        document.getElementById("right").classList.remove('hover');
-        document.getElementById("right").classList.remove('active');
-        document.getElementById("bottom").classList.remove('hover');
-        document.getElementById("bottom").classList.remove('active');
+        if (infoOuter.innerText === '{"a":true,"w":true}' || infoOuter.innerText === '{"w":true,"a":true}') {
+            console.log("up left")
+            controlUpLeft()
+            document.getElementById("top").disabled = false;
+            document.getElementById("top").classList.add('hover');
+            document.getElementById("top").classList.add('active');
+            document.getElementById("left").disabled = false;
+            document.getElementById("left").classList.add('hover');
+            document.getElementById("left").classList.add('active');
+        }
+        if (infoOuter.innerText === '{"d":true,"w":true}' || infoOuter.innerText === '{"w":true,"d":true}') {
+            console.log("up right")
+            controlUpRight()
+            document.getElementById("top").disabled = false;
+            document.getElementById("top").classList.add('hover');
+            document.getElementById("top").classList.add('active');
+            document.getElementById("right").disabled = false;
+            document.getElementById("right").classList.add('hover');
+            document.getElementById("right").classList.add('active');
+        }
+        if (infoOuter.innerText === '{"a":true,"s":true}' || infoOuter.innerText === '{"s":true,"a":true}') {
+            console.log("down left")
+            controlDownLeft()
+            document.getElementById("bottom").disabled = false;
+            document.getElementById("bottom").classList.add('hover');
+            document.getElementById("bottom").classList.add('active');
+            document.getElementById("left").disabled = false;
+            document.getElementById("left").classList.add('hover');
+            document.getElementById("left").classList.add('active');
+        }
+        if (infoOuter.innerText === '{"d":true,"s":true}' || infoOuter.innerText === '{"s":true,"d":true}') {
+            console.log("down right")
+            controlDownRight()
+            document.getElementById("bottom").disabled = false;
+            document.getElementById("bottom").classList.add('hover');
+            document.getElementById("bottom").classList.add('active');
+            document.getElementById("right").disabled = false;
+            document.getElementById("right").classList.add('hover');
+            document.getElementById("right").classList.add('active');
+        }
+    };
 
-        document.getElementById("top").disabled = true;
-        document.getElementById("left").disabled = true;
-        document.getElementById("right").disabled = true;
-        document.getElementById("bottom").disabled = true;
-    })
+    window.onkeyup = function (event) {
+        delete map[event.key];
+        lastEvent = null;
+        delete heldKeys[event.key];
+        info.data = JSON.stringify(heldKeys);
+        if (!map['w'] && !map['a'] && !map['s'] && !map['d']) {
+            controlStop()
+        }
+        if (!map['w']) {
+            document.getElementById("top").disabled = true;
+            document.getElementById("top").classList.remove('hover');
+            document.getElementById("top").classList.remove('active');
+        } if (!map['a']) {
+            document.getElementById("left").disabled = true;
+            document.getElementById("left").classList.remove('hover');
+            document.getElementById("left").classList.remove('active');
+        } if (!map['s']) {
+            document.getElementById("bottom").disabled = true;
+            document.getElementById("bottom").classList.remove('hover');
+            document.getElementById("bottom").classList.remove('active');
+        } if (!map['d']) {
+            document.getElementById("right").disabled = true;
+            document.getElementById("right").classList.remove('hover');
+            document.getElementById("right").classList.remove('active');
+        }
+
+    };
     return (
         <>
             <NavbarComponent />
@@ -133,6 +192,9 @@ const SuveillanceAdmin = () => {
                                 </div>
                             </div> */}
                             <div className='row merge'>
+                                {/* <div id="key-info" style={{display: 'none'}}></div> */}
+                                <div id="key-info" style={{display: 'none'}}></div>
+
                                 <div className='col-md'>
                                     <div>
                                         <div className='insights'>
@@ -173,13 +235,13 @@ const SuveillanceAdmin = () => {
                                 <div className='col-md'>
                                     <div>
                                         <h3>จำนวนคนในขณะนี้</h3>
-                                        <h1 id='data-count'>{masks !== undefined ? masks.Count_Density : 0}</h1>
+                                        <h1 id='data-count'>{masks !== undefined ? masks.Count_Person : 0}</h1>
                                     </div>
                                 </div>
                                 <div className='col-md'>
                                     <div>
                                         <h3>จำนวนคนทั้งหมด</h3>
-                                        <h1 id='data-count'>{masks !== undefined ? masks.Count_Person : 0}</h1>
+                                        <h1 id='data-count'>{masks !== undefined ? masks.Count_Density : 0}</h1>
                                     </div>
                                 </div>
                             </div>

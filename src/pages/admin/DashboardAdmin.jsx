@@ -6,7 +6,7 @@ const DashboardAdmin = () => {
             <NavbarComponent />
             <div className='main'>
                 <main className=''>
-                    <div className='' style={{padding: '0px 10pxz'}} >
+                    <div className='' style={{ padding: '0px 10pxz' }} >
                         <div style={{ borderRadius: '30px', marginBottom: '10px' }}>
                             <div className=''>
                                 {/* <MeetingComponent /> */}
@@ -25,15 +25,15 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    <h1>test</h1>
+                                                                    {/* <h1>test</h1> */}
                                                                     {/* <h1>test</h1> */}
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    <h1>test</h1>
+                                                                    {/* <h1>test</h1> */}
                                                                     {/* <h1>test</h1> */}
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    <h1>test</h1>
+                                                                    {/* <h1>test</h1> */}
                                                                     {/* <h1>test</h1> */}
                                                                 </div>
                                                             </div>
@@ -87,15 +87,53 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        <h2>จำนวนบัญชีทั้งหมด</h2>
+                                                                        {/* <h1>test</h1> */}
                                                                         {/* <h1>test</h1> */}
                                                                     </div>
-
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>                                            </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="accordion-item">
@@ -107,19 +145,56 @@ const DashboardAdmin = () => {
                                         <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                                             <div className="accordion-body">
                                                 <div className="accordion-body">
-                                                    <div className='data-dashboard'>
-                                                        <div>
-                                                            <div className='data center'>
-                                                                <div className='row'>
-                                                                    <div className='col-md'>
-                                                                        <h2>จำนวนบัญชีทั้งหมด</h2>
-                                                                        {/* <h1>test</h1> */}
-                                                                    </div>
-
+                                                <div className='data-dashboard'>
+                                                    <div>
+                                                        <div className='data center'>
+                                                            <div className='row'>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 </div>                                            </div>
                                         </div>
                                     </div>
@@ -132,19 +207,56 @@ const DashboardAdmin = () => {
                                         <div id="panelsStayOpen-collapseFour" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                                             <div className="accordion-body">
                                                 <div className="accordion-body">
-                                                    <div className='data-dashboard'>
-                                                        <div>
-                                                            <div className='data center'>
-                                                                <div className='row'>
-                                                                    <div className='col-md'>
-                                                                        <h2>จำนวนบัญชีทั้งหมด</h2>
-                                                                        {/* <h1>test</h1> */}
-                                                                    </div>
-
+                                                <div className='data-dashboard'>
+                                                    <div>
+                                                        <div className='data center'>
+                                                            <div className='row'>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 </div>                                            </div>
                                         </div>
                                     </div>
@@ -156,16 +268,53 @@ const DashboardAdmin = () => {
                                         </h2>
                                         <div id="panelsStayOpen-collapseFive" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                                             <div className="accordion-body">
-                                                <div className='data-dashboard'>
+                                            <div className='data-dashboard'>
                                                     <div>
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    <h2>จำนวนบัญชีทั้งหมด</h2>
+                                                                    {/* <h1>test</h1> */}
                                                                     {/* <h1>test</h1> */}
                                                                 </div>
-
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,15 +329,22 @@ const DashboardAdmin = () => {
                                         </h2>
                                         <div id="panelsStayOpen-collapseSix" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                                             <div className="accordion-body">
-                                                <div className='data-dashboard'>
+                                            <div className='data-dashboard'>
                                                     <div>
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    <h2>จำนวนบัญชีทั้งหมด</h2>
+                                                                    {/* <h1>test</h1> */}
                                                                     {/* <h1>test</h1> */}
                                                                 </div>
-
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -233,23 +389,56 @@ const DashboardAdmin = () => {
                                             </button>
                                         </h2>
                                         <div id="panelsStayOpen-collapseSeven" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
-                                            <div className="accordion-body">
-                                                <div className="accordion-body">
-                                                    <div className='data-dashboard'>
-                                                        <div>
-                                                            <div className='data center'>
-                                                                <div className='row'>
-                                                                    <div className='col-md'>
-                                                                        <h2>จำนวนบัญชีทั้งหมด</h2>
-                                                                        {/* <h1>test</h1> */}
-                                                                    </div>
-
+                                        <div className='data-dashboard'>
+                                                    <div>
+                                                        <div className='data center'>
+                                                            <div className='row'>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
+                                                                </div>
+                                                                <div className='col-md'>
+                                                                    {/* <h1>test</h1> */}
+                                                                    {/* <h1>test</h1> */}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div className='data'>
+
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -12,7 +12,7 @@ const DashboardTech = () => {
     const fetchData = async () => {
         getMqttInterval().then((res) => {
             setIntervals(res.data)
-            // console.log(res.data)
+            console.log(res.data)
         }).catch((err) => { console.log(err) })
         getSensor().then((res) => {
             setSensors(res.data)
