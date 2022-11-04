@@ -14,6 +14,8 @@ import DashboardTech from './pages/technical/DashboardTech';
 import EquipmentComponent from './components/EquipmentComponent';
 import ConferenceAdmin from './pages/admin/ConferenceAdmin';
 import ConferenceRobot from './pages/robot/ConferenceRobot';
+import StreamingRobot from './pages/robot/StreamingRobot';
+import StreamingAdmin from './pages/admin/StreamingAdmin';
 import App from './App'
 // import FormComponent from "./components/FormComponent"
 // import UserConferenceComponent from './components/Robot/UserConferenceComponent';
@@ -44,6 +46,10 @@ const MyRoute = () => {
                 <Route path='/con-admin/:id' exact element={<ConferenceAdmin />} />
                 <Route path='/con-robot' exact element={<ConferenceRobot />} />
                 <Route path='/dashboard-tech' exact element={<DashboardTech />} />
+
+                <Route path='/streaming' exact element={<StreamingRobot />} />
+                <Route path='/streaming-admin' exact element={<StreamingAdmin />} />
+
                 {/* /Homepage
                 <Route path="/" exact element={<App/>} />
                 /Login

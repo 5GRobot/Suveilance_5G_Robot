@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef, } from 'react'
 import { useParams } from 'react-router-dom'
 import io from 'socket.io-client'
-import WebRTC from '../services/WebRTC'
+import WebRTC from '../../services/WebRTC'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import '../styles/conference.css'
-const MeetingComponent = () => {
+import '../../styles/conference.css'
+const StreamingAdmin = () => {
     const conferenceId = useParams();
     const localVideo = useRef();
     // const [localVideo, setLocalVideo] = useState(document)
     const [videoGrid, setVideoGrid] = useState(document)
     const [notification, setNotification] = useState(document)
-    const [roomInput, setRoomInput] = useState(document)
-    const [joinBtn, setJoinBtn] = useState(document)
+    // const [roomInput, setRoomInput] = useState(document)
+    const [joinBtn, setJoinBtn] = useState(null)
     const [leaveBtn, setLeaveBtn] = useState(document)
     const [kickBtns, setKickBtns] = useState(document)
     const notify = (message) => {
@@ -57,7 +57,7 @@ const MeetingComponent = () => {
         setVideoGrid(document.querySelector('#videoGrid'));
         setNotification(document.querySelector('#notification'));
         // setLocalVideo(document.querySelector('#localVideo-container'));
-        setRoomInput(document.querySelector('#roomId'))
+        // setRoomInput(document.querySelector('#roomId'))
         setJoinBtn(document.querySelector('#joinBtn'))
         setLeaveBtn(document.querySelector('#leaveBtn'))
         setKickBtns(document.querySelector('#kick_btn'))
@@ -67,39 +67,50 @@ const MeetingComponent = () => {
             error: true,
         }))
     }, []);
+    const delay = ms => new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
 
-    const fetchData = async () => {
-        await axios.put(`${import.meta.env.VITE_API}/cfr/updateCaller`, { id: conferenceId.id })
-            .then(response => {
-                if (response.status === 200) {
-                    console.log(response.data);
-                }
-                else console.log("error")
-            }).catch(err => { console.log(err) })
-    }
+
+
+
+
     /**
      * Create or join a room
      */
+    const handleClick = async () => {
+        await delay(2000);
+        joinBtn.click()
+    }
+
+    if (joinBtn !== null) {
+        handleClick();
+    }
+
+
+    const setTitle = (status, e) => {
+        const room = e.detail.roomId;
+
+        console.log(`Room ${room} was ${status}`);
+
+        notify(`Room ${room} was ${status}`);
+        // document.querySelector('h1').textContent = `Room: ${room}`;
+        webrtc.gotStream();
+    };
+
+
     if (webrtc !== null) {
+
         joinBtn.addEventListener('click', () => {
-            fetchData();
-            const room = roomInput.value;
+
+            const room = 'streaming'
+            const name = 'admin'
             if (!room) {
                 notify('Room ID not provided');
                 return;
             }
-
-            webrtc.joinRoom(room);
+            webrtc.joinStreamRoom(room, name);
         });
-        const setTitle = (status, e) => {
-            const room = e.detail.roomId;
-
-            console.log(`Room ${room} was ${status}`);
-
-            notify(`Room ${room} was ${status}`);
-            document.querySelector('h1').textContent = `Room: ${room}`;
-            webrtc.gotStream();
-        };
 
         webrtc.addEventListener('createdRoom', setTitle.bind(this, 'created'));
         webrtc.addEventListener('joinedRoom', setTitle.bind(this, 'joined'));
@@ -113,20 +124,19 @@ const MeetingComponent = () => {
         });
         webrtc.addEventListener('leftRoom', (e) => {
             const room = e.detail.roomId;
-            document.querySelector('h1').textContent = '';
+            // document.querySelector('h1').textContent = '';
             notify(`Left the room ${room}`);
         });
 
         /**
          * Get local media
          */
-        
         webrtc
             .getLocalStream(true, { width: 640, height: 480 })
-            .then((stream) => (localVideo.current.srcObject = stream));
+            .then((stream) => { (localVideo.current.srcObject = stream) });
 
         webrtc.addEventListener('kicked', () => {
-            document.querySelector('h1').textContent = 'You were kicked out';
+            // document.querySelector('h1').textContent = 'You were kicked out';
             videoGrid.innerHTML = '';
         });
 
@@ -137,42 +147,51 @@ const MeetingComponent = () => {
         /**
          * Handle new user connection
          */
+
         webrtc.addEventListener('newUser', (e) => {
             const socketId = e.detail.socketId;
             const stream = e.detail.stream;
+            if (document.getElementsByClassName('grid-item-stream')) {
+                if (document.getElementsByClassName('grid-item-stream').length < 1) {
 
-            console.log(stream)
-            
-            const videoContainer = document.createElement('div');
-            videoContainer.setAttribute('class', 'grid-item');
-            videoContainer.setAttribute('id', socketId);
+                    const videoContainer = document.createElement('div');
+                    videoContainer.setAttribute('class', 'grid-item-stream');
 
-            const video = document.createElement('video');
-            video.setAttribute('autoplay', true);
-            video.setAttribute('muted', true); // set to false
-            video.setAttribute('playsinline', true);
-            video.srcObject = stream;
+                    videoContainer.setAttribute('id', socketId);
 
-            const p = document.createElement('p');
-            p.textContent = socketId;
+                    const video = document.createElement('video');
+                    video.setAttribute('autoplay', true);
+                    video.setAttribute('muted', true); // set to false
+                    video.setAttribute('playsinline', true);
+                    video.srcObject = stream;
 
-            videoContainer.append(p);
-            videoContainer.append(video);
+                    // const p = document.createElement('p');
+                    // p.textContent = socketId;
 
-            // If user is admin add kick buttons
-            if (webrtc.isAdmin) {
-                const kickBtn = document.createElement('button');
-                kickBtn.setAttribute('class', 'kick_btn');
-                kickBtn.textContent = 'Kick';
+                    // videoContainer.append(p);
+                    videoContainer.append(video);
 
-                kickBtn.addEventListener('click', () => {
-                    webrtc.kickUser(socketId);
-                });
+                    // If user is admin add kick buttons
+                    if (webrtc.isAdmin) {
+                        const kickBtn = document.createElement('button');
+                        kickBtn.setAttribute('class', 'kick_btn');
+                        kickBtn.textContent = 'Kick';
 
-                videoContainer.append(kickBtn);
+                        kickBtn.addEventListener('click', () => {
+                            webrtc.kickUser(socketId);
+                        });
+
+                        videoContainer.append(kickBtn);
+                    }
+                    videoGrid.append(videoContainer);
+                }
+            } else {
+                console.log('fff')
+                const noise = document.getElementById('noise');
+                noise.innerHTML = 'ไม่มีสัญญาณ';
             }
-            videoGrid.append(videoContainer);
-        });
+        }
+        );
 
         /**
          * Handle user got removed
@@ -206,38 +225,48 @@ const MeetingComponent = () => {
 
             notify(notif);
         });
+
+
     }
+
 
 
     return (
         <>
-            <h1></h1>
-            <div className='row'>
-                <div className='col-auto'>
-                    <label htmlFor="roomId">Room :</label>
+            <div style={{ display: 'none' }}>
+                <h1></h1>
+                <div className='row'>
+                    <div className='col-auto'>
+                        <label htmlFor="roomId">Room :</label>
+                    </div>
+                    <div className='col-md-3'>
+                        {/* <input className='form-control' id="roomId" type="text" /> */}
+                    </div>
+                    <div className='col-auto'>
+                        <button className='btn btn-success' id="joinBtn">Join</button>
+                    </div>
+                    <div className='col-auto'>
+                        <button className='btn btn-danger' id="leaveBtn">Leave</button>
+                    </div>
+                    <p id="notification"></p>
+
                 </div>
-                <div className='col-md-3'>
-                    <input className='form-control' id="roomId" type="text" />
+
+
+                <div id="localVideo-container">
+                    <video autoPlay playsInline muted></video>
                 </div>
-                <div className='col-auto'>
-                    <button className='btn btn-success' id="joinBtn">Join</button>
-                </div>
-                <div className='col-auto'>
-                    <button className='btn btn-danger' id="leaveBtn">Leave</button>
-                </div>
+
             </div>
 
-            <p id="notification"></p>
 
-            <div id="localVideo-container">
-                <video autoPlay playsInline ref={localVideo} muted></video>
-            </div>
 
             <div id="videos">
                 <div id="videoGrid" className="grid-container"></div>
+                <div id="noise"></div>
             </div>
         </>
     )
 }
 
-export default MeetingComponent
+export default StreamingAdmin

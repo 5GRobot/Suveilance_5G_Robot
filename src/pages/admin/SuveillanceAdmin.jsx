@@ -6,6 +6,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import ChartAdmin from '../../services/ChartAdmin'
 import Streaming from '../../services/Streaming';
 import { RadialGauge } from 'react-canvas-gauges';
+import StreamingAdmin from './StreamingAdmin'
 
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -266,7 +267,8 @@ const SuveillanceAdmin = () => {
                                         <div>
                                             <div className=''>
                                                 <div>
-                                                    <Streaming />
+                                                    {/* <Streaming /> */}
+                                                    <StreamingAdmin/>
                                                 </div>
                                             </div>
                                         </div>

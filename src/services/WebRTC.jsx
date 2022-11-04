@@ -91,6 +91,27 @@ class WebRTC extends EventTarget {
         this.socket.emit('create or join', room);
     }
 
+    joinStreamRoom(room,name) {
+        if (this.room) {
+            this.warn('Leave current room before joining a new one');
+
+            this._emit('notification', {
+                notification: `Leave current room before joining a new one`,
+            });
+            return;
+        }
+        if (!room) {
+            this.warn('Room ID not provided');
+
+            this._emit('notification', {
+                notification: `Room ID not provided`,
+            });
+            return;
+        }
+        this.socket.emit('create or joinstream', room,name);
+    }
+
+
     leaveRoom() {
         if (!this.room) {
             this.warn('You are currently not in a room');

@@ -50,7 +50,7 @@ const server = require('http').createServer(app);
 ///
 * Socket.io events
  */
-console.log(process.env.CLIENT);
+
 const io = socketIO(server
     , {
         cors: {
@@ -95,15 +95,17 @@ io.sockets.on('connection', function (socket) {
             socket.broadcast.emit('message', message, socket.id);
         }
     });
-
+    let adminSocket;
     let roomAdmin; // save admins socket id (will get overwritten if new room gets created)
-
     /**
      * When room gets created or someone joins it
      */
-    socket.on('create or join', (room) => {
-        log('Create or Join room: ' + room);
+    socket.on("hi", () => {
+        console.log("hi")
+    })
 
+    socket.on('create or join', (room, name) => {
+        log('Create or Join room: ' + room);
         // Get number of clients in the room
         const clientsInRoom = io.sockets.adapter.rooms.get(room);
         let numClients = clientsInRoom ? clientsInRoom.size : 0;
@@ -113,16 +115,51 @@ io.sockets.on('connection', function (socket) {
             socket.join(room);
             roomAdmin = socket.id;
             socket.emit('created', room, socket.id);
+            console.log('Created room: ' + room + ' - ' + socket.id);
         } else {
             log('Client ' + socket.id + ' joined room ' + room);
 
             // Join room
             io.sockets.in(room).emit('join', room); // Notify users in room
             socket.join(room);
+
             io.to(socket.id).emit('joined', room, socket.id); // Notify client that they joined a room
             io.sockets.in(room).emit('ready', socket.id); // Room is ready for creating connections
         }
     });
+
+
+    socket.on('create or joinstream', (room, name) => {
+        log('Create or Join room: ' + room);
+        console.log(name)
+        // Get number of clients in the room
+        const clientsInRoom = io.sockets.adapter.rooms.get(room);
+        let numClients = clientsInRoom ? clientsInRoom.size : 0;
+
+        if (name === "robot") {
+            // Create room
+            socket.join(room);
+            roomAdmin = socket.id;
+            adminSocket = socket.id;
+            console.log("adminSocket" + adminSocket)
+
+            socket.emit('created', room, socket.id);
+            console.log('Created room: ' + room + ' - ' + socket.id);
+        }
+        else {
+            log('Client ' + socket.id + ' joined room ' + room);
+            console.log('login' + name)
+            // Join room
+            io.sockets.in(room).emit('join', room); // Notify users in room
+            socket.join(room);
+            io.to(socket.id).emit('joined', room, socket.id); // Notify client that they joined a room
+
+            // io.sockets.in(room).emit('ready', socket.id); // Room is ready for creating connections
+        }
+        // console.log(socket)
+    });
+
+
 
     /**
      * Kick participant from a call
@@ -140,6 +177,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('leave room', (room) => {
         socket.leave(room);
         socket.emit('left room', room);
+
         socket.broadcast.to(room).emit('message', { type: 'leave' }, socket.id);
     });
 
@@ -152,6 +190,14 @@ io.sockets.on('connection', function (socket) {
             socket.broadcast
                 .to(room)
                 .emit('message', { type: 'leave' }, socket.id);
+            console.log('disconnecting');
+            console.log('room : ' + room)
+            if (socket.id === adminSocket) {
+                if (room === 'streaming') {
+                    io.in("streaming").socketsLeave("streaming");
+                }
+            }
         });
+
     });
 });
