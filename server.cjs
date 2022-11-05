@@ -62,6 +62,8 @@ const io = socketIO(server
 server.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
+
+
 io.sockets.on('connection', function (socket) {
     /**
      * Log actions to the client
@@ -71,7 +73,9 @@ io.sockets.on('connection', function (socket) {
         array.push.apply(array, arguments);
         socket.emit('log', array);
     }
-
+    socket.on("control", (control) => {
+        console.log(control)
+    })
     /**
      * Handle message from a client
      * If toId is provided message will be sent ONLY to the client with that id
@@ -100,9 +104,7 @@ io.sockets.on('connection', function (socket) {
     /**
      * When room gets created or someone joins it
      */
-    socket.on("hi", () => {
-        console.log("hi")
-    })
+
 
     socket.on('create or join', (room, name) => {
         log('Create or Join room: ' + room);
