@@ -243,7 +243,7 @@ const UserConferenceComponent = () => {
                 })
             }
         });
-        delay(1000);
+        delay(1500);
         joinBtn.click();
     }
 

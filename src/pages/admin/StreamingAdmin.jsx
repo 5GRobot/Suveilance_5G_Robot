@@ -132,8 +132,9 @@ const StreamingAdmin = () => {
          * Get local media
          */
         webrtc
-            .getLocalStream(true, { width: 640, height: 480 })
-            .then((stream) => { (localVideo.current.srcObject = stream) });
+            .getLocalStreamAdmin(true,false, { width: 640, height: 480 })
+            .then((stream) => { (console.log()) })
+            .catch((err) => {});
 
         webrtc.addEventListener('kicked', () => {
             // document.querySelector('h1').textContent = 'You were kicked out';

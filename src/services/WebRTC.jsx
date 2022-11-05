@@ -1,5 +1,6 @@
 'use strict';
 import Swal from 'sweetalert2';
+import { FakeMediaStreamTrack } from 'fake-mediastreamtrack';
 class WebRTC extends EventTarget {
     constructor(
         socket,
@@ -91,7 +92,7 @@ class WebRTC extends EventTarget {
         this.socket.emit('create or join', room);
     }
 
-    joinStreamRoom(room,name) {
+    joinStreamRoom(room, name) {
         if (this.room) {
             this.warn('Leave current room before joining a new one');
 
@@ -108,7 +109,7 @@ class WebRTC extends EventTarget {
             });
             return;
         }
-        this.socket.emit('create or joinstream', room,name);
+        this.socket.emit('create or joinstream', room, name);
     }
 
 
@@ -127,9 +128,7 @@ class WebRTC extends EventTarget {
 
     // Get local stream
     getLocalStream(audioConstraints, videoConstraints) {
-        navigator.getUserMedia = navigator.getUserMedia ||
-            navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia;
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
         if (navigator.getUserMedia) {
             return navigator.mediaDevices
                 .getUserMedia({
@@ -142,11 +141,36 @@ class WebRTC extends EventTarget {
                     return stream;
                 })
                 .catch(() => {
+                    // this._localStream = stream;
                     this.error("Can't get usermedia");
-
+                    // alert(`Can't get usermedia`);
                     this._emit('error', {
                         error: new Error(`Can't get usermedia`),
                     });
+                });
+        }
+    }
+
+    getLocalStreamAdmin(audioConstraints, videoConstraints) {
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        if (navigator.getUserMedia) {
+            return navigator.mediaDevices
+                .getUserMedia({
+                    audio: audioConstraints,
+                    video: videoConstraints,
+                })
+                .then((stream) => {
+                    this.log('Got local stream.');
+                    this._localStream = stream;
+                    // return stream;
+                })
+                .catch(() => {
+                    // this._localStream = stream;
+                    // this.error("Can't get usermedia");
+                    alert(`Can't get usermedia`);
+                    // this._emit('error', {
+                    //     error: new Error(`Can't get usermedia`),
+                    // });
                 });
         }
     }
@@ -158,13 +182,10 @@ class WebRTC extends EventTarget {
     _connect(socketId) {
         if (typeof this._localStream !== 'undefined' && this.isReady) {
             this.log('Create peer connection to ', socketId);
-
             this._createPeerConnection(socketId);
             this.pcs[socketId].addStream(this._localStream);
-
             if (this.isInitiator) {
                 this.log('Creating offer for ', socketId);
-
                 this._makeOffer(socketId);
             }
         } else {
@@ -224,7 +245,7 @@ class WebRTC extends EventTarget {
         // Room is ready for connection
         this.socket.on('ready', (user) => {
             this.log('User: ', user, ' joined room');
-
+            // console.log(this.pcs[socketId])
             if (user !== this._myId && this.inCall) this.isInitiator = true;
         });
 
@@ -296,6 +317,7 @@ class WebRTC extends EventTarget {
                     );
                     break;
                 case 'candidate': // received candidate sdp
+
                     this.inCall = true;
                     const candidate = new RTCIceCandidate({
                         sdpMLineIndex: message.label,
@@ -328,12 +350,13 @@ class WebRTC extends EventTarget {
                 this,
                 socketId
             );
+            console.log(this.pcs[socketId])
             // this.pcs[socketId].onremovetrack = this._handleOnRemoveTrack.bind(
             //     this,
             //     socketId
             // );
-
             this.log('Created RTCPeerConnnection for ', socketId);
+
         } catch (error) {
             this.error('RTCPeerConnection failed: ' + error.message);
 
@@ -376,7 +399,6 @@ class WebRTC extends EventTarget {
      */
     _makeOffer(socketId) {
         this.log('Sending offer to ', socketId);
-
         this.pcs[socketId].createOffer(
             this._setSendLocalDescription.bind(this, socketId),
             this._handleCreateOfferError
@@ -422,6 +444,7 @@ class WebRTC extends EventTarget {
                 stream: event.streams[0],
             });
         }
+
     }
 
     _handleUserLeave(socketId) {

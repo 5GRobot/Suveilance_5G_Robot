@@ -19,6 +19,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "fake-mediastreamtrack": "^1.1.6",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-canvas-gauges": "^1.2.1",

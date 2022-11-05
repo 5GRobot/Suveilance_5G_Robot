@@ -133,7 +133,7 @@ const StreamingComponent = () => {
          * Get local media
          */
         webrtc
-            .getLocalStream(true, { width: 640, height: 480 })
+            .getLocalStream(false,true, { width: 640, height: 480 })
             .then((stream) => (localVideo.current.srcObject = stream));
 
         webrtc.addEventListener('kicked', () => {
