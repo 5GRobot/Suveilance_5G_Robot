@@ -1,6 +1,5 @@
 'use strict';
 import Swal from 'sweetalert2';
-import { FakeMediaStreamTrack } from 'fake-mediastreamtrack';
 class WebRTC extends EventTarget {
     constructor(
         socket,

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import NavbarComponent from '../../components/NavbarComponent'
+
 const DashboardAdmin = () => {
+    const { connectionStatus } = useMqttState();
     return (
         <>
             <NavbarComponent />
@@ -145,56 +147,56 @@ const DashboardAdmin = () => {
                                         <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                                             <div className="accordion-body">
                                                 <div className="accordion-body">
-                                                <div className='data-dashboard'>
-                                                    <div>
-                                                        <div className='data center'>
-                                                            <div className='row'>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                    <div className='data-dashboard'>
+                                                        <div>
+                                                            <div className='data center'>
+                                                                <div className='row'>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
+                                                        <div>
+                                                            <div className='data'>
 
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 </div>                                            </div>
                                         </div>
                                     </div>
@@ -207,56 +209,56 @@ const DashboardAdmin = () => {
                                         <div id="panelsStayOpen-collapseFour" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
                                             <div className="accordion-body">
                                                 <div className="accordion-body">
-                                                <div className='data-dashboard'>
-                                                    <div>
-                                                        <div className='data center'>
-                                                            <div className='row'>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                    <div className='data-dashboard'>
+                                                        <div>
+                                                            <div className='data center'>
+                                                                <div className='row'>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
+                                                                    <div className='col-md'>
+                                                                        {/* <h1>test</h1> */}
+                                                                        {/* <h1>test</h1> */}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
+                                                        <div>
+                                                            <div className='data'>
 
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className='data'>
+
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 </div>                                            </div>
                                         </div>
                                     </div>
@@ -268,7 +270,7 @@ const DashboardAdmin = () => {
                                         </h2>
                                         <div id="panelsStayOpen-collapseFive" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
                                             <div className="accordion-body">
-                                            <div className='data-dashboard'>
+                                                <div className='data-dashboard'>
                                                     <div>
                                                         <div className='data center'>
                                                             <div className='row'>
@@ -329,7 +331,7 @@ const DashboardAdmin = () => {
                                         </h2>
                                         <div id="panelsStayOpen-collapseSix" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                                             <div className="accordion-body">
-                                            <div className='data-dashboard'>
+                                                <div className='data-dashboard'>
                                                     <div>
                                                         <div className='data center'>
                                                             <div className='row'>
@@ -389,56 +391,56 @@ const DashboardAdmin = () => {
                                             </button>
                                         </h2>
                                         <div id="panelsStayOpen-collapseSeven" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
-                                        <div className='data-dashboard'>
-                                                    <div>
-                                                        <div className='data center'>
-                                                            <div className='row'>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
-                                                                <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
-                                                                </div>
+                                            <div className='data-dashboard'>
+                                                <div>
+                                                    <div className='data center'>
+                                                        <div className='row'>
+                                                            <div className='col-md'>
+                                                                {/* <h1>test</h1> */}
+                                                                {/* <h1>test</h1> */}
+                                                            </div>
+                                                            <div className='col-md'>
+                                                                {/* <h1>test</h1> */}
+                                                                {/* <h1>test</h1> */}
+                                                            </div>
+                                                            <div className='col-md'>
+                                                                {/* <h1>test</h1> */}
+                                                                {/* <h1>test</h1> */}
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div>
-                                                        <div className='data'>
+                                                </div>
+                                                <div>
+                                                    <div className='data'>
 
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className='data'>
-
-                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <div className='data'>
+
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className='data'>
+
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className='data'>
+
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className='data'>
+
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className='data'>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

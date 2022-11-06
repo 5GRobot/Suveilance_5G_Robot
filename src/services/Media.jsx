@@ -737,7 +737,7 @@ var browserFakeUserAgent = 'Fake/5.0 (FakeOS) AppleWebKit/123 (KHTML, like Gecko
     }
 
     if (typeof window === 'undefined' && typeof global !== 'undefined') {
-        global.navigator = {
+        navigator = {
             userAgent: browserFakeUserAgent,
             getUserMedia: function() {}
         };

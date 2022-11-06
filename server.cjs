@@ -64,6 +64,48 @@ server.listen(port, () => {
 });
 
 
+
+const mqtt = require('mqtt')
+let messageMqtt;
+class MqttHandler {
+    constructor() {
+        this.mqttClient = null;
+        this.host = 'mqtt://broker.hivemq.com:1883';
+    }
+
+    connect() {
+        // Connect mqtt with credentials (in case of needed, otherwise we can omit 2nd param)
+        this.mqttClient = mqtt.connect(this.host);
+
+        // Mqtt error calback
+        this.mqttClient.on('error', (err) => {
+            console.log(err);
+            this.mqttClient.end();
+        });
+
+        // Connection callback
+        this.mqttClient.on('connect', () => {
+            console.log(`mqtt Control connected`);
+        });
+
+        this.mqttClient.on('close', () => {
+            console.log(`mqtt Control disconnected`);
+        });
+    }
+
+    // Sends a mqtt message to topic: mytopic
+    sendMessage(message) {
+        this.mqttClient.publish('Robot5G/Web/Control', message);
+    }
+}
+
+var mqttClient = new MqttHandler();
+mqttClient.connect();
+
+
+
+
+
 io.sockets.on('connection', function (socket) {
     /**
      * Log actions to the client
@@ -74,7 +116,8 @@ io.sockets.on('connection', function (socket) {
         socket.emit('log', array);
     }
     socket.on("control", (control) => {
-        console.log(control)
+        mqttClient.sendMessage(JSON.stringify(control));
+
     })
     /**
      * Handle message from a client
