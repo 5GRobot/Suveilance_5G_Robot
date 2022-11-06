@@ -50,7 +50,6 @@ const server = require('http').createServer(app);
 ///
 * Socket.io events
  */
-
 const io = socketIO(server
     , {
         cors: {
@@ -59,6 +58,7 @@ const io = socketIO(server
         }
     }
 );
+
 server.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
