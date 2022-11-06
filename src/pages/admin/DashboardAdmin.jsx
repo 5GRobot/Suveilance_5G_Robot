@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import NavbarComponent from '../../components/NavbarComponent'
 
 const DashboardAdmin = () => {
-    const { connectionStatus } = useMqttState();
     return (
         <>
             <NavbarComponent />

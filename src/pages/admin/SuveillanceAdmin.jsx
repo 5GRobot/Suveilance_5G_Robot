@@ -69,6 +69,7 @@ const SuveillanceAdmin = () => {
     }
 
     window.onkeydown = function (event) {
+
         map[event.key] = true;
         if (lastEvent && lastEvent.key == event.key) {
             return;
@@ -194,7 +195,7 @@ const SuveillanceAdmin = () => {
                             </div> */}
                             <div className='row merge'>
                                 {/* <div id="key-info" style={{display: 'none'}}></div> */}
-                                <div id="key-info" style={{display: 'none'}}></div>
+                                <div id="key-info" style={{ display: 'none' }}></div>
 
                                 <div className='col-md'>
                                     <div>
@@ -268,7 +269,7 @@ const SuveillanceAdmin = () => {
                                             <div className=''>
                                                 <div>
                                                     {/* <Streaming /> */}
-                                                    <StreamingAdmin/>
+                                                    <StreamingAdmin />
                                                 </div>
                                             </div>
                                         </div>

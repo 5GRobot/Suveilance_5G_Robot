@@ -117,7 +117,7 @@ io.sockets.on('connection', function (socket) {
     }
     socket.on("control", (control) => {
         mqttClient.sendMessage(JSON.stringify(control));
-
+        socket.broadcast.emit('control', control);
     })
     /**
      * Handle message from a client

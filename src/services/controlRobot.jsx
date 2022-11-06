@@ -9,7 +9,10 @@ export const controlUp = () => {
     // }).catch(err => {
     //   console.log(err)
     // })
-    socket.emit('control', { W: 1, A: 0, S: 0, D: 0 })
+    var d = new Date();
+    var date = d.getSeconds() + '.' + d.getMilliseconds();
+    console.log(date)
+    socket.emit('control', { W: 1, A: 0, S: 0, D: 0, time: date })
 
 }
 
@@ -21,7 +24,7 @@ export const controlDown = () => {
     //   console.log(err)
     // })
     socket.emit('control', { W: 0, A: 0, S: 1, D: 0 })
-    
+
 }
 
 
@@ -95,6 +98,8 @@ export const controlStop = () => {
     // }).catch(err => {
     //   console.log(err)
     // })
-    socket.emit('control', { W: 0, A: 0, S: 0, D: 0 })
-
+    var d = new Date();
+    var date = d.getSeconds() + '.' + d.getMilliseconds();
+    console.log(date)
+    socket.emit('control', { W: 0, A: 0, S: 0, D: 0, time: date })
 }
