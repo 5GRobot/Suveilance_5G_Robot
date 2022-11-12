@@ -8,12 +8,15 @@ const DashboardAdmin = () => {
     const [mask, setMask] = useState([])
     socket.on("Robot5G_Control_Interval", (intervals) => {
         setIntervals(intervals)
+        console.log(intervals)
     })
     socket.on("Robot5G_MPC_Sensor", (sensor) => {
         setSensor(sensor)
+        console.log(sensor)
     })
     socket.on("Robot5G_Jetson2_Mask", (mask) => {
         setMask(mask)
+        console.log(mask)
     })
 
     return (
