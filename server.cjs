@@ -120,6 +120,19 @@ io.sockets.on('connection', function (socket) {
         socket.broadcast.emit('control', control);
     })
 
+    socket.on("Robot5G_Control_Interval", (intervals) => {
+        socket.broadcast.emit('Robot5G_Control_Interval', intervals);
+
+    })
+    socket.on("Robot5G_MPC_Sensor", (sensor) => {
+        socket.broadcast.emit('Robot5G_MPC_Sensor', sensor);
+
+    })
+    socket.on("Robot5G_Jetson2_Mask", (mask) => {
+        socket.broadcast.emit('Robot5G_Jetson2_Mask', mask);
+
+    })
+
     /**
      * Handle message from a client
      * If toId is provided message will be sent ONLY to the client with that id

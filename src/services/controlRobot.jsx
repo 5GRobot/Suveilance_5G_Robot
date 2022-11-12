@@ -13,6 +13,7 @@ export const controlUp = () => {
     var date = d.getSeconds() + '.' + d.getMilliseconds();
     console.log(date)
     socket.emit('control', { W: 1, A: 0, S: 0, D: 0, time: date })
+    socket.emit("Robot5G_Control_Interval",{ W: 1, A: 0, S: 0, D: 1 })
 
 }
 
