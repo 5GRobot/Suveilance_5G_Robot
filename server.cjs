@@ -119,6 +119,7 @@ io.sockets.on('connection', function (socket) {
         mqttClient.sendMessage(JSON.stringify(control));
         socket.broadcast.emit('control', control);
     })
+
     /**
      * Handle message from a client
      * If toId is provided message will be sent ONLY to the client with that id

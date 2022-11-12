@@ -1,16 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import NavbarComponent from '../../components/NavbarComponent'
-
+import io from 'socket.io-client'
 const DashboardAdmin = () => {
+    const socket = io.connect(`${import.meta.env.VITE_SERVER_IO}`)
+    const [intervals, setIntervals] = useState([])
+    const [sensor, setSensor] = useState([])
+    const [mask, setMask] = useState([])
+    socket.on("Robot5G_Control_Interval", (intervals) => {
+        setIntervals(intervals)
+    })
+    socket.on("Robot5G_MPC_Sensor", (sensor) => {
+        setSensor(sensor)
+    })
+    socket.on("Robot5G_Jetson2_Mask", (mask) => {
+        setMask(mask)
+    })
+
     return (
         <>
             <NavbarComponent />
             <div className='main'>
                 <main className=''>
-                    <div className='' style={{ padding: '0px 10pxz' }} >
+                    <h1>Interval</h1>
+                    <div>
+                        <p>{JSON.stringify(intervals)}</p>
+                    </div>
+                    <h1>Sensor</h1>
+                    <div>
+                        <p>{JSON.stringify(sensor)}</p>
+                    </div>
+                    <h1>Mask</h1>
+                    <div>
+                        <p>{JSON.stringify(mask)}</p>
+                    </div>
+
+                    {/* <div className='' style={{ padding: '0px 10pxz' }} >
                         <div style={{ borderRadius: '30px', marginBottom: '10px' }}>
                             <div className=''>
-                                {/* <MeetingComponent /> */}
                                 <span><h6></h6></span>
                                 <div className="accordion" id="accordionPanelsStayOpenExample">
                                     <div className="accordion-item">
@@ -26,16 +52,16 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -88,16 +114,16 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -151,16 +177,16 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -213,16 +239,16 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        {/* <h1>test</h1> */}
-                                                                        {/* <h1>test</h1> */}
+                                                                        
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -274,16 +300,16 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -335,16 +361,16 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    {/* <h1>test</h1> */}
-                                                                    {/* <h1>test</h1> */}
+                                                                    
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -395,16 +421,16 @@ const DashboardAdmin = () => {
                                                     <div className='data center'>
                                                         <div className='row'>
                                                             <div className='col-md'>
-                                                                {/* <h1>test</h1> */}
-                                                                {/* <h1>test</h1> */}
+                                                                
+                                                                
                                                             </div>
                                                             <div className='col-md'>
-                                                                {/* <h1>test</h1> */}
-                                                                {/* <h1>test</h1> */}
+                                                                
+                                                                
                                                             </div>
                                                             <div className='col-md'>
-                                                                {/* <h1>test</h1> */}
-                                                                {/* <h1>test</h1> */}
+                                                                
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -445,7 +471,7 @@ const DashboardAdmin = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </main>
             </div>
         </>
