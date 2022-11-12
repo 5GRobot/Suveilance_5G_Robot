@@ -24,18 +24,18 @@ const DashboardAdmin = () => {
         <>
             <NavbarComponent />
             <div className='main'>
-                <main className=''>
+                <main className='' style={{color: 'red'}}>
                     <h1>Interval</h1>
                     <div>
-                        <p>{JSON.stringify(intervals)}</p>
+                        <p>{intervals}</p>
                     </div>
                     <h1>Sensor</h1>
                     <div>
-                        <p>{JSON.stringify(sensor)}</p>
+                        <p>{sensor}</p>
                     </div>
                     <h1>Mask</h1>
                     <div>
-                        <p>{JSON.stringify(mask)}</p>
+                        <p>{mask}</p>
                     </div>
 
                     {/* <div className='' style={{ padding: '0px 10pxz' }} >
