@@ -27,15 +27,15 @@ const DashboardAdmin = () => {
                 <main className='' style={{color: 'red'}}>
                     <h1>Interval</h1>
                     <div>
-                        <p>{intervals}</p>
+                        <h4>{intervals}</h4>
                     </div>
                     <h1>Sensor</h1>
                     <div>
-                        <p>{sensor}</p>
+                        <h4>{sensor}</h4>
                     </div>
                     <h1>Mask</h1>
                     <div>
-                        <p>{mask}</p>
+                        <h4>{mask}</h4>
                     </div>
 
                     {/* <div className='' style={{ padding: '0px 10pxz' }} >
