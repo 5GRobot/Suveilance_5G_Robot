@@ -7,7 +7,6 @@ import ChartAdmin from '../../services/ChartAdmin'
 import Streaming from '../../services/Streaming';
 import { RadialGauge } from 'react-canvas-gauges';
 import StreamingAdmin from './StreamingAdmin'
-
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -21,33 +20,12 @@ const SuveillanceAdmin = () => {
     const [masks, setMasks] = useState(undefined)
     const [sensors, setSensors] = useState(undefined)
     const [infoOuter, setInfoOuter] = useState(undefined)
-
+    const [checked, setChecked] = useState(false);
+    
     useEffect(() => {
-        // const interval = setInterval(() => {
-        //     fetchData();
-        // }, 1000);
-        // return () => clearInterval(interval);
         setInfoOuter(document.getElementById('key-info'))
     }, []);
 
-    const fetchData = async () => {
-        await axios.get(`${import.meta.env.VITE_API}/mqtt/Interval`)
-            .then(response => {
-                response.status === 200 ? setIntervals(response.data) : console.log("error")
-            }).catch((err) => { console.log("Not Working") })
-
-        await axios.get(`${import.meta.env.VITE_API}/mqtt/Mask`)
-            .then(response => {
-                response.status === 200 ? setMasks(response.data) : console.log("error")
-            }).catch((err) => { console.log("Not Working") })
-
-        await axios.get(`${import.meta.env.VITE_API}/mqtt/Sensor`)
-            .then(response => {
-                response.status === 200 ? setSensors(response.data) : console.log("error")
-            }).catch((err) => { console.log("Not Working") })
-    }
-
-    const [checked, setChecked] = useState(false);
     const handleChange = nextChecked => {
         setChecked(nextChecked);
     };
@@ -182,21 +160,8 @@ const SuveillanceAdmin = () => {
                 <main>
                     <div className='dashboard-container'>
                         <div className='dashboard-item-mask'>
-                            {/* <div className='row not-merge'>
-                                <div className='col-md'>
-                                    <div>
-                                        <div className=''>
-                                            <div>
-                                                <Streaming />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                             <div className='row merge'>
-                                {/* <div id="key-info" style={{display: 'none'}}></div> */}
                                 <div id="key-info" style={{ display: 'none' }}></div>
-
                                 <div className='col-md'>
                                     <div>
                                         <div className='insights'>
@@ -341,49 +306,6 @@ const SuveillanceAdmin = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className='dashboard-item-mask'>
-                            <div className='row not-merge'>
-                                <div className='col-md'>
-                                    <div className='center'>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='row not-merge'>
-                                <div className='col-md'>
-                                    <div>
-                                        <h3>ความเร็ว</h3>
-                                        <div className='center'>
-                                            <RadialGauge
-                                                units='cm/s'
-                                                title='Speed'
-                                                value={intervals !== undefined ? intervals.SR : 0}
-                                                minValue={0}
-                                                maxValue={100}
-                                                majorTicks={['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
-                                                minorTicks={2}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-md'>
-                                    <div>
-                                        <h3>อุณหภูมิ</h3>
-                                        <div className='center'>
-                                            <RadialGauge
-                                                units='°C'
-                                                title='Temperature'
-                                                value={sensors !== undefined ? sensors.TB : 0}
-                                                minValue={0}
-                                                maxValue={360}
-                                                majorTicks={['0', '5', '15', '20', '25', '30', '35', '40', '45', '50']}
-                                                minorTicks={2}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-
                     </div>
                 </main>
             </div >

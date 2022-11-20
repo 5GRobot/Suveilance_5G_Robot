@@ -5,9 +5,9 @@ import SuveillanceAdmin from './pages/admin/SuveillanceAdmin';
 import ManageUserAdmin from './pages/admin/ManageUserAdmin';
 import MeetingAdmin from './pages/admin/MeetingAdmin';
 import ControlAdmin from './pages/admin/ControlAdmin';
-
+import AdminPage from './pages/admin/AdminPage';
 import TestComponent from './components/TestComponent';
-
+import NavbarComponent from './components/NavbarComponent';
 import ReportRepair from './pages/admin/ReportRepair';
 import ReportRepairTech from './pages/technical/ReportRepairTech';
 import DashboardTech from './pages/technical/DashboardTech';
@@ -32,7 +32,9 @@ const MyRoute = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/test" element={<TestComponent />} />
+                <Route path="/nav" element={<NavbarComponent/>} />
 
+                <Route path="/admin" element={<AdminPage />}/>
                 <Route path="/" exact element={<App />} />
                 <Route path="/admin/dashboard" element={<DashboardAdmin />} />
                 <Route path='/admin/suveillance' exact element={<SuveillanceAdmin />} />

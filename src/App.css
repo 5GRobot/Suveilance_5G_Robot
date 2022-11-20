@@ -16,7 +16,7 @@
   --color-background: #f6f6f6;
   --color-green: #E1FAFF;
   --color-pp: #5D13E7;
-  --card-border-radius: 2rem;
+  --card-border-radius: 0.7rem;
   --border-radius-1: 0.4rem;
   --border-radius-2: 0.8rem;
   --border-radius-3: 1.2rem;
@@ -43,27 +43,23 @@ a:-webkit-any-link {
 
 body {
   min-width: 887px;
-  /* min-height: 30px; */
   background: var(--color-dark-variant);
-  /* width: 100vw; */
-  /* font-family: 'Roboto Slab', serif; */
   font-family: 'Athiti', sans-serif;
   font-size: 0.88rem;
   overflow-x: hidden;
 }
-
+.scrollspy-example {
+  position: relative;
+  /* height: 100px; */
+  /* overflow-y: auto; */
+}
 .container {
-  /* display: grid; */
   width: 96%;
   margin: auto;
   gap: 1.8rem;
   grid-template-columns: 14rem auto 23rem;
 }
 
-/* width */
-/* ::-webkit-scrollbar {
-  width: 0px;
-} */
 
 Link {
   color: var(--color-dark);
@@ -107,10 +103,7 @@ small {
   overflow: hidden
 }
 
-.text-muted {
-  color: var(--color-info-dark);
-  text-shadow: 0px 1px 3px rgba(0, 0, 0, 50%);
-}
+
 
 .center {
   display: flex;

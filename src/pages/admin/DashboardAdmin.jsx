@@ -24,21 +24,8 @@ const DashboardAdmin = () => {
         <>
             <NavbarComponent />
             <div className='main'>
-                <main className='' style={{color: 'red'}}>
-                    <h1>Interval</h1>
-                    <div>
-                        <h4>{intervals}</h4>
-                    </div>
-                    <h1>Sensor</h1>
-                    <div>
-                        <h4>{sensor}</h4>
-                    </div>
-                    <h1>Mask</h1>
-                    <div>
-                        <h4>{mask}</h4>
-                    </div>
-
-                    {/* <div className='' style={{ padding: '0px 10pxz' }} >
+                <main className=''>
+                    <div className='' style={{ padding: '0px 10px' }} >
                         <div style={{ borderRadius: '30px', marginBottom: '10px' }}>
                             <div className=''>
                                 <span><h6></h6></span>
@@ -56,16 +43,13 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -118,16 +102,16 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -181,16 +165,16 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -243,16 +227,16 @@ const DashboardAdmin = () => {
                                                             <div className='data center'>
                                                                 <div className='row'>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                     <div className='col-md'>
-                                                                        
-                                                                        
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -304,16 +288,16 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -365,16 +349,16 @@ const DashboardAdmin = () => {
                                                         <div className='data center'>
                                                             <div className='row'>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                                 <div className='col-md'>
-                                                                    
-                                                                    
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -425,16 +409,16 @@ const DashboardAdmin = () => {
                                                     <div className='data center'>
                                                         <div className='row'>
                                                             <div className='col-md'>
-                                                                
-                                                                
+
+
                                                             </div>
                                                             <div className='col-md'>
-                                                                
-                                                                
+
+
                                                             </div>
                                                             <div className='col-md'>
-                                                                
-                                                                
+
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -475,7 +459,7 @@ const DashboardAdmin = () => {
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </main>
             </div>
         </>
