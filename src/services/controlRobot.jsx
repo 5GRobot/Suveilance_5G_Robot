@@ -12,7 +12,7 @@ export const controlUp = () => {
     // var d = new Date();
     // var date = d.getSeconds() + '.' + d.getMilliseconds();
     // console.log(date)
-    // socket.emit('control', { W: 1, A: 0, S: 0, D: 0, time: date })
+    socket.emit('control', { W: 1, A: 0, S: 0, D: 0})
     // socket.emit("Robot5G_Control_Interval",{ W: 1, A: 0, S: 0, D: 1 })
 
 }
@@ -24,7 +24,7 @@ export const controlDown = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 0, A: 0, S: 1, D: 0 })
+    socket.emit('control', { W: 0, A: 0, S: 1, D: 0 })
 
 }
 
@@ -36,7 +36,7 @@ export const controlLeft = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 0, A: 1, S: 0, D: 0 })
+    socket.emit('control', { W: 0, A: 1, S: 0, D: 0 })
 }
 
 
@@ -47,7 +47,7 @@ export const controlRight = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 0, A: 0, S: 0, D: 1 })
+    socket.emit('control', { W: 0, A: 0, S: 0, D: 1 })
 }
 
 export const controlUpLeft = () => {
@@ -57,7 +57,7 @@ export const controlUpLeft = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 1, A: 1, S: 0, D: 0 })
+    socket.emit('control', { W: 1, A: 1, S: 0, D: 0 })
 
 }
 export const controlUpRight = () => {
@@ -67,7 +67,7 @@ export const controlUpRight = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 1, A: 0, S: 0, D: 1 })
+    socket.emit('control', { W: 1, A: 0, S: 0, D: 1 })
 }
 
 export const controlDownLeft = () => {
@@ -77,7 +77,7 @@ export const controlDownLeft = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 0, A: 1, S: 1, D: 0 })
+    socket.emit('control', { W: 0, A: 1, S: 1, D: 0 })
 
 }
 
@@ -88,7 +88,7 @@ export const controlDownRight = () => {
     }).catch(err => {
       console.log(err)
     })
-    // socket.emit('control', { W: 0, A: 0, S: 1, D: 1 })
+    socket.emit('control', { W: 0, A: 0, S: 1, D: 1 })
 
 }
 
@@ -102,5 +102,5 @@ export const controlStop = () => {
     // var d = new Date();
     // var date = d.getSeconds() + '.' + d.getMilliseconds();
     // console.log(date)
-    // socket.emit('control', { W: 0, A: 0, S: 0, D: 0, time: date })
+    socket.emit('control', { W: 0, A: 0, S: 0, D: 0 })
 }

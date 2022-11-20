@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from "axios"
-import DashboardAdmin from '../pages/admin/DashboardAdmin'
-import SuveillanceAdmin from '../pages/admin/SuveillanceAdmin'
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import SecurityIcon from '@mui/icons-material/Security';
 import SettingsIcon from '@mui/icons-material/Settings';

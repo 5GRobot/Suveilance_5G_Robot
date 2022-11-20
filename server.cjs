@@ -116,8 +116,9 @@ io.sockets.on('connection', function (socket) {
         socket.emit('log', array);
     }
     socket.on("control", (control) => {
-        mqttClient.sendMessage(JSON.stringify(control));
+        // mqttClient.sendMessage(JSON.stringify(control));
         socket.broadcast.emit('control', control);
+        // console.log(control)
     })
 
     socket.on("Robot5G_Control_Interval", (intervals) => {
